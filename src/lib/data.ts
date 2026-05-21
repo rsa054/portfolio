@@ -71,11 +71,9 @@ export const EXPERIENCE: Experience[] = [
     summary:
       "Lead engineer designing and shipping DeFi infrastructure, cross-chain systems and AI-integrated on-chain gaming protocols across EVM chains and Sui.",
     highlights: [
-      "Architected UUPS upgradeable smart contract systems with rigorous role-based access and timelocked governance.",
-      "Built cross-chain settlement and swap infrastructure leveraging Across Protocol, multi-source signatures and on-chain validation.",
-      "Designed AI-powered blockchain gaming agents capable of generating, simulating and deploying on-chain games from natural language.",
-      "Orchestrated Gnosis Safe multisig workflows backed by AWS KMS signing for production deployments and treasury operations.",
-      "Drove protocol-wide gas optimization passes (calldata, storage layout, assembly) and shipped multiple security remediations post-audit.",
+      "Architected UUPS upgradeable smart contracts with role-based access and timelocked governance.",
+      "Shipped cross-chain swap infrastructure and AI-powered on-chain gaming agents across EVM and Sui.",
+      "Led gas optimization, post-audit security remediations and Gnosis Safe + AWS KMS deployment workflows.",
     ],
     stack: ["Solidity", "Sui Move", "TypeScript", "Foundry", "Viem", "AWS KMS", "Across"],
     active: true,
@@ -87,9 +85,8 @@ export const EXPERIENCE: Experience[] = [
     summary:
       "Led the platform team building real-time food delivery infrastructure that powered routing, dispatch and order orchestration at city-scale.",
     highlights: [
-      "Architected the DRF service layer that exposed order, dispatch and merchant APIs with strict throughput SLOs.",
-      "Optimized Redis-backed real-time channels for live order, courier and ETA streams across multiple cities.",
-      "Owned the dispatch state machine and recovery semantics for in-flight orders during partial outages.",
+      "Architected the DRF service layer for orders, dispatch and merchant APIs at city scale.",
+      "Optimized Redis-backed real-time channels and owned the in-flight dispatch state machine.",
     ],
     stack: ["Python", "Django", "DRF", "Redis", "PostgreSQL", "Celery"],
   },
@@ -100,9 +97,8 @@ export const EXPERIENCE: Experience[] = [
     summary:
       "Built scalable financial and operational backend systems using DDD and clean architecture patterns.",
     highlights: [
-      "Modeled financial domains with aggregates, value objects and explicit invariants, preventing whole classes of bugs at compile-time.",
-      "Designed read-optimized APIs and migration playbooks that survived major schema overhauls without downtime.",
-      "Mentored junior engineers on clean architecture, testing strategy and pragmatic DDD.",
+      "Modeled financial domains with DDD aggregates, value objects and explicit invariants.",
+      "Designed read-optimized APIs and zero-downtime migration playbooks.",
     ],
     stack: ["Python", "Django", "PostgreSQL", "DDD"],
   },
