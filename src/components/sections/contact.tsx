@@ -39,11 +39,11 @@ export function ContactSection() {
           eyebrow="Contact"
           title={
             <>
-              Let&apos;s build the future of{" "}
-              <span className="text-gradient-accent">decentralized systems</span>
+              Let&apos;s make something{" "}
+              <span className="text-gradient-accent">worth shipping</span>
             </>
           }
-          description="Have a protocol to ship, a contract to harden, or an idea you want to take on-chain? Drop a line. I read everything."
+          description="Have an idea, a system to build, or a project that needs a careful hand? Drop a line. I read everything."
         />
 
         <div className="mt-16 grid gap-6 lg:grid-cols-5">
@@ -193,8 +193,8 @@ python .net rust typescript solidity sui-move
           transition={{ duration: 0.6 }}
           className="mx-auto mt-20 max-w-3xl text-center font-display text-2xl tracking-tight text-text-secondary sm:text-3xl"
         >
-          <span className="text-text-primary">Let&apos;s build the future of </span>
-          <span className="text-gradient-accent">decentralized systems.</span>
+          <span className="text-text-primary">Let&apos;s make something </span>
+          <span className="text-gradient-accent">worth shipping.</span>
         </motion.p>
       </div>
     </section>

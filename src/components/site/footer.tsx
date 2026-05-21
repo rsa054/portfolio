@@ -53,7 +53,7 @@ export function Footer() {
             href="#contact"
             className="inline-flex items-center gap-1.5 text-text-secondary transition-colors hover:text-accent-cyan"
           >
-            Let&apos;s build the future of decentralized systems
+            Let&apos;s make something worth shipping
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>

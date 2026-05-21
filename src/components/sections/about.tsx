@@ -62,10 +62,13 @@ export function AboutSection() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.05 }}
             >
-              From there I went deep on blockchain: upgradeable smart contracts
-              and DeFi primitives that hold up under real economic pressure, plus{" "}
-              <em className="not-italic text-text-primary">Makara</em> (an
-              ECS framework for fully on-chain games on Sui).
+              Most recently I&apos;ve been building{" "}
+              <em className="not-italic text-text-primary">Makara</em>, an
+              open-source Entity-Component-System framework for fully on-chain
+              games on Sui. Move-native ECS primitives with type-safe component
+              registration, composable combat, inventory and movement modules,
+              and a TypeScript SDK with PTB orchestration that keeps player
+              actions gas-efficient and batched.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
