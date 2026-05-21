@@ -42,7 +42,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1.5 text-xs font-medium text-text-secondary backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-text-primary"
+            className="group inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1.5 text-xs font-medium text-text-secondary backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-text-primary"
           >
             <span className="relative h-1.5 w-1.5">
               <span className="absolute inset-0 rounded-full bg-accent-cyan" />
@@ -120,7 +120,12 @@ export function HeroSection() {
               View Projects
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </MagneticButton>
-            <MagneticButton href="/resume.pdf" variant="outline">
+            <MagneticButton
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+            >
               <Download className="h-4 w-4" />
               Download Resume
             </MagneticButton>
@@ -144,7 +149,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="group flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-text-secondary backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent-cyan/40 hover:text-text-primary"
+                className="group flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-text-secondary backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent-cyan/40 hover:text-text-primary"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -176,7 +181,7 @@ export function HeroSection() {
               "Viem",
             ].map((s, idx) => (
               <span key={`${k}-${idx}`} className="inline-flex items-center gap-3">
-                <span className="h-1 w-1 rounded-full bg-black/30" />
+                <span className="h-1 w-1 rounded-full bg-foreground/30" />
                 {s}
               </span>
             )),

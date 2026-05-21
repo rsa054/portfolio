@@ -17,8 +17,8 @@ export function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 250, damping: 18, mass: 0.5 });
-  const sy = useSpring(y, { stiffness: 250, damping: 18, mass: 0.5 });
+  const sx = useSpring(x, { stiffness: 420, damping: 28, mass: 0.4 });
+  const sy = useSpring(y, { stiffness: 420, damping: 28, mass: 0.4 });
 
   const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
     const el = ref.current;
@@ -26,8 +26,11 @@ export function MagneticButton({
     const r = el.getBoundingClientRect();
     const mx = e.clientX - (r.left + r.width / 2);
     const my = e.clientY - (r.top + r.height / 2);
-    x.set(mx * 0.25);
-    y.set(my * 0.35);
+    // Cap pull so adjacent buttons don't overshoot into each other
+    const maxX = r.width * 0.08;
+    const maxY = r.height * 0.15;
+    x.set(Math.max(-maxX, Math.min(maxX, mx * 0.1)));
+    y.set(Math.max(-maxY, Math.min(maxY, my * 0.15)));
   };
   const onLeave = () => {
     x.set(0);
@@ -36,9 +39,9 @@ export function MagneticButton({
 
   const styles =
     variant === "primary"
-      ? "relative overflow-hidden rounded-full bg-[#0b0d12] text-white hover:bg-[#0b0d12] shadow-[0_10px_30px_-12px_rgba(11,13,18,0.45)]"
+      ? "relative overflow-hidden rounded-full bg-foreground text-background hover:bg-foreground shadow-[0_10px_30px_-12px_rgba(11,13,18,0.45)]"
       : variant === "outline"
-        ? "rounded-full border border-black/12 bg-white/70 text-text-primary backdrop-blur hover:border-accent-cyan/60 hover:bg-white"
+        ? "rounded-full border border-foreground/15 bg-background/70 text-text-primary backdrop-blur hover:border-accent-cyan/60 hover:bg-foreground/[0.06]"
         : "rounded-full text-text-secondary hover:text-text-primary";
 
   return (

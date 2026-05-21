@@ -32,6 +32,25 @@ export function NodeGraph({ className }: { className?: string }) {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Theme-aware accent (re-read whenever theme class flips)
+    let accentRgb = "8, 145, 178";
+    const readAccent = () => {
+      const raw = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent-cyan")
+        .trim();
+      const m = raw.match(/^#?([0-9a-f]{6})$/i);
+      if (m) {
+        const n = parseInt(m[1], 16);
+        accentRgb = `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+      }
+    };
+    readAccent();
+    const themeObserver = new MutationObserver(readAccent);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       width = rect.width;
@@ -106,7 +125,7 @@ export function NodeGraph({ className }: { className?: string }) {
           const d2 = dx * dx + dy * dy;
           if (d2 < max2) {
             const alpha = (1 - d2 / max2) * 0.32;
-            ctx.strokeStyle = `rgba(8, 145, 178, ${alpha})`;
+            ctx.strokeStyle = `rgba(${accentRgb}, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -123,8 +142,8 @@ export function NodeGraph({ className }: { className?: string }) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r + near * 1.4, 0, Math.PI * 2);
         const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, 14);
-        g.addColorStop(0, `rgba(8, 145, 178, ${0.55 + near * 0.25})`);
-        g.addColorStop(1, "rgba(8, 145, 178, 0)");
+        g.addColorStop(0, `rgba(${accentRgb}, ${0.55 + near * 0.25})`);
+        g.addColorStop(1, `rgba(${accentRgb}, 0)`);
         ctx.fillStyle = g;
         ctx.fill();
       }
@@ -143,6 +162,7 @@ export function NodeGraph({ className }: { className?: string }) {
       window.removeEventListener("pointermove", onMove);
       canvas.removeEventListener("pointerleave", onLeave);
       document.removeEventListener("visibilitychange", onVis);
+      themeObserver.disconnect();
     };
   }, []);
 

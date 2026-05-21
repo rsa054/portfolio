@@ -52,7 +52,7 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: i * 0.05 }}
-                className="group relative overflow-hidden rounded-3xl border border-black/10 bg-black/[0.03] p-6 transition-all duration-500 hover:border-black/15"
+                className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.04] p-6 transition-all duration-500 hover:border-foreground/20"
               >
                 <div
                   className={cn(
@@ -65,7 +65,7 @@ export function SkillsSection() {
                   <div className="flex items-center gap-3">
                     <div
                       className={cn(
-                        "flex h-9 w-9 items-center justify-center rounded-lg border border-black/10 bg-black/[0.04]",
+                        "flex h-9 w-9 items-center justify-center rounded-lg border border-foreground/10 bg-foreground/5",
                         accent.icon,
                       )}
                     >

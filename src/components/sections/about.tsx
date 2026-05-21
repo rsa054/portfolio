@@ -91,7 +91,7 @@ export function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="group relative overflow-hidden rounded-2xl border border-black/10 bg-black/[0.03] p-4 transition-colors hover:border-accent-cyan/40"
+                  className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-4 transition-colors hover:border-accent-cyan/40"
                 >
                   <div className="font-display text-2xl font-semibold text-text-primary">
                     {s.value}
@@ -106,7 +106,7 @@ export function AboutSection() {
           </div>
 
           {/* Orbit */}
-          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-black/10 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_60%)]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-foreground/10 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_60%)]">
             <div className="absolute inset-0 bg-grid-fine opacity-40" />
             <Orbit items={orbitItems} />
             <div className="pointer-events-none absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted">
@@ -127,7 +127,7 @@ function Orbit({ items }: { items: typeof orbitItems }) {
       <motion.div
         animate={{ scale: [1, 1.06, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-black/12 bg-gradient-to-br from-black/[0.06] to-black/[0.02] backdrop-blur-md"
+        className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-foreground/15 bg-gradient-to-br from-foreground/[0.08] to-foreground/[0.03] backdrop-blur-md"
       >
         <span className="font-display text-2xl font-bold tracking-tighter text-gradient">
           K
@@ -163,7 +163,7 @@ function Ring({ ring, children }: { ring: number; children: React.ReactNode }) {
     <motion.div
       animate={{ rotate: reverse ? -360 : 360 }}
       transition={{ duration: dur, repeat: Infinity, ease: "linear" }}
-      className="absolute rounded-full border border-dashed border-black/8"
+      className="absolute rounded-full border border-dashed border-foreground/10"
       style={{ width: size, height: size }}
     >
       {children}
@@ -198,7 +198,7 @@ function OrbitBadge({
         transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
       }}
     >
-      <div className="group flex items-center gap-1.5 rounded-full border border-black/10 bg-bg-base/80 px-2.5 py-1.5 backdrop-blur-md transition-all hover:border-accent-cyan/50">
+      <div className="group flex items-center gap-1.5 rounded-full border border-foreground/10 bg-bg-base/80 px-2.5 py-1.5 backdrop-blur-md transition-all hover:border-accent-cyan/50">
         <Icon className="h-3.5 w-3.5 text-accent-cyan" />
         <span className="text-[11px] font-medium text-text-secondary group-hover:text-text-primary">
           {label}

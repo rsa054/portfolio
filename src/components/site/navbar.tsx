@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/cn";
+import { useTheme } from "@/components/providers/theme-provider";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -35,12 +37,12 @@ export function Navbar() {
           className={cn(
             "mt-4 flex items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-500",
             scrolled
-              ? "border-black/10 bg-[rgba(255,255,255,0.72)] backdrop-blur-xl shadow-[0_10px_40px_-18px_rgba(11,13,18,0.18)]"
+              ? "border-foreground/10 bg-background/70 backdrop-blur-xl shadow-[0_10px_40px_-18px_rgba(11,13,18,0.18)]"
               : "border-transparent bg-transparent",
           )}
         >
           <a href="#" className="group flex items-center gap-2.5">
-            <span className="relative flex h-7 w-7 items-center justify-center rounded-md border border-black/12 bg-gradient-to-br from-black/[0.06] to-black/[0.02]">
+            <span className="relative flex h-7 w-7 items-center justify-center rounded-md border border-foreground/15 bg-gradient-to-br from-foreground/[0.08] to-foreground/[0.03]">
               <span className="absolute inset-0 rounded-md bg-gradient-to-br from-accent-cyan/30 to-accent-purple/30 opacity-0 transition group-hover:opacity-100" />
               <span className="font-display text-[13px] font-bold tracking-tighter">K</span>
             </span>
@@ -64,9 +66,10 @@ export function Navbar() {
           </ul>
 
           <div className="hidden items-center gap-2 md:flex">
+            <ThemeToggleButton theme={theme} toggle={toggle} />
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-2 rounded-full border border-black/12 bg-black/[0.04] px-4 py-1.5 text-[13px] font-medium text-text-primary transition-all hover:border-accent-cyan/60 hover:bg-black/[0.06]"
+              className="group relative inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/5 px-4 py-1.5 text-[13px] font-medium text-text-primary transition-all hover:border-accent-cyan/60 hover:bg-foreground/[0.07]"
             >
               <span className="relative h-1.5 w-1.5">
                 <span className="absolute inset-0 rounded-full bg-accent-cyan" />
@@ -76,14 +79,17 @@ export function Navbar() {
             </a>
           </div>
 
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-black/10 bg-black/[0.04] text-text-primary md:hidden"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggleButton theme={theme} toggle={toggle} />
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-foreground/10 bg-foreground/5 text-text-primary"
+            >
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
         </motion.nav>
       </div>
 
@@ -103,7 +109,7 @@ export function Navbar() {
                     <a
                       onClick={() => setOpen(false)}
                       href={link.href}
-                      className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:bg-black/5 hover:text-text-primary"
+                      className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:bg-foreground/5 hover:text-text-primary"
                     >
                       <span>{link.label}</span>
                       <span className="text-text-muted">↗</span>
@@ -116,5 +122,51 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+function ThemeToggleButton({
+  theme,
+  toggle,
+}: {
+  theme: "light" | "dark";
+  toggle: () => void;
+}) {
+  return (
+    <motion.button
+      type="button"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+      onClick={toggle}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
+      transition={{ type: "spring", stiffness: 380, damping: 22 }}
+      className="relative inline-flex h-9 w-9 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-foreground/15 bg-foreground/5 text-text-secondary transition-colors hover:border-accent-cyan/60 hover:text-text-primary"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {theme === "dark" ? (
+          <motion.span
+            key="moon"
+            initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <Moon className="h-4 w-4" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="sun"
+            initial={{ rotate: 90, opacity: 0, scale: 0.6 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: -90, opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <Sun className="h-4 w-4" />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </motion.button>
   );
 }

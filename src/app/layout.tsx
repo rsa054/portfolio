@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
-import { Navbar } from "@/components/site/navbar";
-import { Footer } from "@/components/site/footer";
-import { CursorSpotlight } from "@/components/effects/cursor-spotlight";
+import { ThemeProvider, themeInitScript } from "@/components/providers/theme-provider";
 
 const sansDisplay = Inter({
   variable: "--font-sans-display",
@@ -82,14 +79,13 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050608",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f8fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#050608" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -131,21 +127,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sansDisplay.variable} ${monoDisplay.variable} ${displayGrotesk.variable} dark`}
+      className={`${sansDisplay.variable} ${monoDisplay.variable} ${displayGrotesk.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-dvh noise selection:bg-[color:var(--accent-cyan-soft)] selection:text-white">
+      <head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
+      <body className="min-h-dvh noise selection:bg-[color:var(--accent-cyan-soft)]">
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <SmoothScrollProvider>
-          <CursorSpotlight />
-          <Navbar />
-          <main className="relative z-10">{children}</main>
-          <Footer />
-        </SmoothScrollProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

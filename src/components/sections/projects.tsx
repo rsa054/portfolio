@@ -96,7 +96,7 @@ function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: index * 0.05 }}
-      className="group relative isolate overflow-hidden rounded-3xl border border-black/10 bg-black/[0.03] p-6 text-left transition-all duration-500 hover:border-black/15"
+      className="group relative isolate overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.04] p-6 text-left transition-all duration-500 hover:border-foreground/20"
     >
       {/* spotlight follow */}
       <div
@@ -117,7 +117,7 @@ function ProjectCard({
       <div className="relative flex h-full flex-col gap-5">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-black/[0.04]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/5">
               <Icon className="h-4 w-4 text-text-primary" />
             </div>
             <div>
@@ -133,7 +133,7 @@ function ProjectCard({
         </div>
 
         {project.role && (
-          <span className="inline-flex w-fit items-center rounded-full border border-black/10 bg-black/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-text-secondary">
+          <span className="inline-flex w-fit items-center rounded-full border border-foreground/10 bg-foreground/5 px-2.5 py-0.5 text-[11px] font-medium text-text-secondary">
             {project.role}
           </span>
         )}
@@ -209,7 +209,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         exit={{ opacity: 0, scale: 0.96, y: 16 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-black/10 bg-bg-elevated p-8 shadow-2xl"
+        className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-foreground/10 bg-bg-elevated p-8 shadow-2xl"
       >
         <div
           className="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full blur-3xl"
@@ -222,7 +222,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           whileHover={{ scale: 1.08, rotate: 90 }}
           whileTap={{ scale: 0.92, rotate: 90 }}
           transition={{ type: "spring", stiffness: 380, damping: 22 }}
-          className="group absolute right-4 top-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-text-secondary transition-colors hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-600 focus-visible:outline-none active:bg-rose-500/15"
+          className="group absolute right-4 top-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-text-secondary transition-colors hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-600 focus-visible:outline-none active:bg-rose-500/15"
         >
           <X className="h-4 w-4 transition-colors" />
           <span
@@ -236,7 +236,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </motion.button>
 
         <div className="relative flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-black/[0.04]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/5">
             <Icon className="h-4 w-4" />
           </div>
           <div>

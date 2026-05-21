@@ -31,9 +31,9 @@ export function ExpertiseSection() {
           <div className="pointer-events-none absolute inset-0 -z-10 hidden lg:block">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="relative h-80 w-80">
-                <div className="absolute inset-0 rounded-full border border-black/8 spin-slow" />
-                <div className="absolute inset-6 rounded-full border border-dashed border-black/8" />
-                <div className="absolute inset-12 rounded-full border border-black/8" />
+                <div className="absolute inset-0 rounded-full border border-foreground/10 spin-slow" />
+                <div className="absolute inset-6 rounded-full border border-dashed border-foreground/10" />
+                <div className="absolute inset-12 rounded-full border border-foreground/10" />
                 <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2">
                   <div
                     className="h-3 w-3 rounded-full"
@@ -55,7 +55,7 @@ export function ExpertiseSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.6, delay: i * 0.04 }}
-                  className="group relative overflow-hidden rounded-3xl border border-black/10 bg-bg-base/40 p-6 backdrop-blur-md transition-all duration-500 hover:border-black/15"
+                  className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-bg-base/40 p-6 backdrop-blur-md transition-all duration-500 hover:border-foreground/20"
                 >
                   <div
                     className="pointer-events-none absolute -top-20 -left-20 h-48 w-48 rounded-full opacity-50 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
@@ -65,7 +65,7 @@ export function ExpertiseSection() {
                   <div className="relative flex items-center justify-between">
                     <div
                       className={cn(
-                        "flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-black/[0.04]",
+                        "flex h-10 w-10 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/5",
                         a.text,
                       )}
                     >
@@ -85,7 +85,7 @@ export function ExpertiseSection() {
                     {e.bullets.map((b) => (
                       <li
                         key={b}
-                        className="rounded-full border border-black/10 bg-black/[0.03] px-2 py-0.5 text-[11px] text-text-secondary"
+                        className="rounded-full border border-foreground/10 bg-foreground/[0.04] px-2 py-0.5 text-[11px] text-text-secondary"
                       >
                         {b}
                       </li>

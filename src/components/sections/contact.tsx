@@ -56,7 +56,7 @@ export function ContactSection() {
             onSubmit={onSubmit}
             className="lg:col-span-3"
           >
-            <div className="rounded-3xl border border-black/10 bg-black/[0.03] p-6 backdrop-blur-md sm:p-8">
+            <div className="rounded-3xl border border-foreground/10 bg-foreground/[0.04] p-6 backdrop-blur-md sm:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field
                   label="Your name"
@@ -119,8 +119,8 @@ export function ContactSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2"
           >
-            <div className="overflow-hidden rounded-3xl border border-black/10 bg-bg-elevated">
-              <div className="flex items-center justify-between border-b border-black/10 px-4 py-2.5">
+            <div className="overflow-hidden rounded-3xl border border-foreground/10 bg-bg-elevated">
+              <div className="flex items-center justify-between border-b border-foreground/10 px-4 py-2.5">
                 <div className="flex items-center gap-1.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
@@ -157,7 +157,7 @@ python .net rust typescript solidity sui-move
               </pre>
             </div>
 
-            <div className="mt-4 rounded-2xl border border-black/10 bg-black/[0.03] p-4">
+            <div className="mt-4 rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-4">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted">
                 Find me elsewhere
               </p>
@@ -168,7 +168,7 @@ python .net rust typescript solidity sui-move
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1.5 text-xs text-text-secondary transition-all hover:-translate-y-0.5 hover:border-accent-cyan/40 hover:text-text-primary"
+                    className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1.5 text-xs text-text-secondary transition-all hover:-translate-y-0.5 hover:border-accent-cyan/40 hover:text-text-primary"
                   >
                     <Icon className="h-3.5 w-3.5" />
                     {label}
@@ -215,7 +215,7 @@ type FieldProps = {
 function Field({ label, value, onChange, type = "text", placeholder, required, rows = 4, as = "input" }: FieldProps) {
   const id = label.toLowerCase().replace(/\s+/g, "-");
   const inputCls =
-    "w-full rounded-xl border border-black/10 bg-black/[0.03] px-4 py-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-accent-cyan/60 focus:bg-black/[0.04]";
+    "w-full rounded-xl border border-foreground/10 bg-foreground/[0.04] px-4 py-3 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-accent-cyan/60 focus:bg-foreground/5";
   return (
     <label htmlFor={id} className="block">
       <span className="mb-2 inline-block font-mono text-[10.5px] uppercase tracking-[0.18em] text-text-muted">

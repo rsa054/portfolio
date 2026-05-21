@@ -31,7 +31,7 @@ export function ExperienceSection() {
 
         <div ref={ref} className="relative mx-auto mt-16 max-w-4xl">
           {/* timeline rail */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-black/10 sm:left-1/2 sm:-translate-x-1/2" />
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-foreground/10 sm:left-1/2 sm:-translate-x-1/2" />
           <motion.div
             style={{ height: lineY }}
             className="absolute left-4 top-0 w-px origin-top sm:left-1/2 sm:-translate-x-1/2"
@@ -84,7 +84,7 @@ export function ExperienceSection() {
 
 function Card({ exp, alignRight }: { exp: (typeof EXPERIENCE)[number]; alignRight: boolean }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-black/10 bg-black/[0.03] p-6 transition-all duration-500 hover:border-black/15">
+    <div className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-6 transition-all duration-500 hover:border-foreground/20">
       <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(400px_180px_at_var(--mx,50%)_var(--my,50%),rgba(34,211,238,0.18),transparent_60%)]" />
       </div>
@@ -95,7 +95,7 @@ function Card({ exp, alignRight }: { exp: (typeof EXPERIENCE)[number]; alignRigh
           {exp.period}
           {exp.location && (
             <>
-              <span className="text-white/20">·</span>
+              <span className="text-foreground/20">·</span>
               <span>{exp.location}</span>
             </>
           )}
@@ -127,7 +127,7 @@ function Card({ exp, alignRight }: { exp: (typeof EXPERIENCE)[number]; alignRigh
           {exp.stack.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-black/10 bg-black/[0.04] px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.12em] text-text-secondary"
+              className="rounded-full border border-foreground/10 bg-foreground/5 px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.12em] text-text-secondary"
             >
               {s}
             </span>

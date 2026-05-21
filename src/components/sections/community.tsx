@@ -52,10 +52,10 @@ export function CommunitySection() {
         <div className="mt-16 grid gap-6 lg:grid-cols-5">
           {/* Contribution graph */}
           <div className="lg:col-span-3">
-            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-black/[0.03] p-6">
+            <div className="relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.04] p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-black/10 bg-black/[0.04]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-foreground/10 bg-foreground/5">
                     <Github className="h-4 w-4" />
                   </div>
                   <div>
@@ -81,7 +81,7 @@ export function CommunitySection() {
                 {stats.map(({ Icon, label, value }) => (
                   <div
                     key={label}
-                    className="rounded-xl border border-black/10 bg-black/[0.03] p-3"
+                    className="rounded-xl border border-foreground/10 bg-foreground/[0.04] p-3"
                   >
                     <div className="flex items-center gap-2 text-text-secondary">
                       <Icon className="h-3.5 w-3.5" />
@@ -95,7 +95,7 @@ export function CommunitySection() {
               </div>
             </div>
 
-            <div className="mt-6 rounded-3xl border border-black/10 bg-black/[0.03] p-6">
+            <div className="mt-6 rounded-3xl border border-foreground/10 bg-foreground/[0.04] p-6">
               <h4 className="font-display text-base font-semibold">Open-source philosophy</h4>
               <p className="mt-2 text-sm text-text-secondary">
                 Standards should be auditable. Primitives should be composable. Security should be
@@ -114,13 +114,13 @@ export function CommunitySection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group rounded-2xl border border-black/10 bg-black/[0.03] p-5 transition-colors hover:border-accent-cyan/40"
+                className="group rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-5 transition-colors hover:border-accent-cyan/40"
               >
                 <div className="flex items-start justify-between">
                   <h4 className="font-display text-base font-semibold text-text-primary">
                     {c.name}
                   </h4>
-                  <span className="rounded-full border border-black/10 bg-black/[0.04] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-text-secondary">
+                  <span className="rounded-full border border-foreground/10 bg-foreground/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-text-secondary">
                     {c.tag}
                   </span>
                 </div>
@@ -144,16 +144,16 @@ function ContributionGrid() {
           const seed = (Math.sin(idx * 12.9898) * 43758.5453) % 1;
           const v = Math.abs(seed);
           const level = v < 0.45 ? 0 : v < 0.7 ? 1 : v < 0.85 ? 2 : v < 0.95 ? 3 : 4;
-          const bg =
+          const cls =
             level === 0
-              ? "rgba(11,13,18,0.06)"
+              ? "bg-foreground/10"
               : level === 1
-                ? "rgba(8,145,178,0.22)"
+                ? "bg-accent-cyan/25"
                 : level === 2
-                  ? "rgba(8,145,178,0.45)"
+                  ? "bg-accent-cyan/50"
                   : level === 3
-                    ? "rgba(8,145,178,0.7)"
-                    : "rgba(8,145,178,0.95)";
+                    ? "bg-accent-cyan/75"
+                    : "bg-accent-cyan";
           return (
             <motion.span
               key={idx}
@@ -161,8 +161,7 @@ function ContributionGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: (idx / (weeks * days)) * 0.6 }}
-              className="aspect-square rounded-[3px]"
-              style={{ background: bg }}
+              className={`aspect-square rounded-[3px] ${cls}`}
             />
           );
         })}
