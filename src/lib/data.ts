@@ -46,7 +46,7 @@ export const STATS = [
   { value: "7+", label: "Years engineering" },
   { value: "4+", label: "Years in blockchain" },
   { value: "20+", label: "Production systems shipped" },
-  { value: "$120M+", label: "TVL secured" },
+  { value: "99.9%", label: "Production uptime" },
   { value: "Multi", label: "Stack & chain expertise" },
   { value: "10M+", label: "Requests served daily" },
 ];
